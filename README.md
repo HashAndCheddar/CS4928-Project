@@ -21,9 +21,28 @@ python -m pip install -r requirements.txt
 python -m unittest discover
 ```
 
+## Bounded sample
+
+Proposed first 12 Trivago source participants in lexicographic ID order, pending confirmation of the sampling unit.
+
+| Case | Source participant ID |
+| --- | --- |
+| 1 | `1008229224` |
+| 2 | `1011753262` |
+| 3 | `1025860732` |
+| 4 | `1029648602` |
+| 5 | `10462104` |
+| 6 | `1064871636` |
+| 7 | `106596355` |
+| 8 | `1069016979` |
+| 9 | `1069077091` |
+| 10 | `1079066079` |
+| 11 | `1080126573` |
+| 12 | `1080177711` |
+
 ## Research Question 1
 
-RQ1 is a local replication: run the authors' existing simulation, reproduce the Trivago analysis and compare it with the paper's results. No custom simulation wrappers or RAG components are needed.
+RQ1 reproduces the authors' Trivago diffusion range using their original simulation and analysis. Full-network results are compared with the paper; the assessed analysis uses the first 12 eligible cases in the brief's stable order, with the case unit confirmed and IDs frozen beforehand. Earlier runs were exploratory setup.
 
 Run the authors' original Trivago simulation:
 
@@ -49,13 +68,12 @@ jupyter lab ranges.ipynb
 ```
 
 1. Keep only the Trivago analysis, loading `../data/minimal_distances/trivago.pickle.bz2`.
-2. Compare the calculated percentile ranges and maximum with the Trivago values in Tables 5 and 6 of the paper.
-3. Create `research/RQ1/` for our tables and figures, export there instead of `reports/`, and explain any differences in the report.
+2. Compare full-network ranges with Tables 5 and 6; compare the confirmed 12 cases with their corresponding reference results, keeping the full network intact **(optional, make a file that automatically runs all dependencies to replicate results)**.
+3. Export our evidence to `research/RQ1/`, retaining case IDs, versions and deviations. Explain limited reach using temporal ordering, disconnected participants and missing review opportunities.
 
 ## Research Question 2
 
 We plan to build a full RAG system with embeddings, vector retrieval and grounded LLM generation. Participants will only retrieve previously encountered information, up to a fixed limit, so we can compare diffusion coverage against the original perfect memory baseline.
-
 ### Suggested architecture
 
 ```text
