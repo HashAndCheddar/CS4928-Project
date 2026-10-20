@@ -21,55 +21,35 @@ python -m pip install -r requirements.txt
 python -m unittest discover
 ```
 
-## Bounded sample
-
-Proposed first 12 Trivago source participants in lexicographic ID order, pending confirmation of the sampling unit.
-
-| Case | Source participant ID |
-| --- | --- |
-| 1 | `1008229224` |
-| 2 | `1011753262` |
-| 3 | `1025860732` |
-| 4 | `1029648602` |
-| 5 | `10462104` |
-| 6 | `1064871636` |
-| 7 | `106596355` |
-| 8 | `1069016979` |
-| 9 | `1069077091` |
-| 10 | `1079066079` |
-| 11 | `1080126573` |
-| 12 | `1080177711` |
-
 ## Research Question 1
 
-RQ1 reproduces the authors' Trivago diffusion range using their original simulation and analysis. Full-network results are compared with the paper; the assessed analysis uses the first 12 eligible cases in the brief's stable order, with the case unit confirmed and IDs frozen beforehand. Earlier runs were exploratory setup.
-
-Run the authors' original Trivago simulation:
+RQ1 asks: **To what result can the information diffusion range reported by the paper be repeated using the authors' algorithm and Trivago's code review dataset?** We run the original simulation on the full Trivago network, with no participant sample restriction:
 
 ```bash
-python -m simulation.run --select trivago
+python -m research.rq1.run
 ```
 
-This calculates shortest, fastest and foremost temporal distances, saved in `data/minimal_distances/`.
+The script regenerates the authors' shortest, fastest and foremost distances, then applies the range calculation from `notebooks/ranges.ipynb`. For each participant, range is the number of other participants they can reach via time-ordered reviews; normalized range divides that count by the total participant count. Trivago has 364 participants and 2,442 review channels. The two cumulative distributions are written to:
 
-To view the authors' existing Trivago figure and range results on macOS:
+- `research/rq1/results/normalized_ranges.csv`
+- `research/rq1/results/ranges.csv`
 
-```bash
-open reports/png/range_over_time_trivago.png
-open reports/csv/ranges.csv
-```
+The reproduced values match the Trivago values in Tables 5 and 6 of the paper:
 
-To reproduce plots using the authors' own notebook:
+| Paper table | Paper percentile | Paper Trivago range | Reproduced range |
+| --- | ---: | ---: | ---: |
+| 5 (normalized) | 0.70 | 0.67–0.85 | 0.67–0.85 |
+| 5 (normalized) | 0.50 | 0.72–0.85 | 0.72–0.85 |
+| 5 (normalized) | 0.30 | 0.81–0.85 | 0.81–0.85 |
+| 5 (normalized) | 0.10 | 0.83–0.85 | 0.83–0.85 |
+| 5 (normalized) | max | 0.85 | 0.85 |
+| 6 (absolute) | 0.70 | 245–310 | 245–310 |
+| 6 (absolute) | 0.50 | 266–310 | 266–310 |
+| 6 (absolute) | 0.30 | 296–310 | 296–310 |
+| 6 (absolute) | 0.10 | 309–310 | 309–310 |
+| 6 (absolute) | max | 310 | 310 |
 
-```bash
-python -m pip install jupyterlab matplotlib ipywidgets
-cd notebooks
-jupyter lab ranges.ipynb
-```
-
-1. Keep only the Trivago analysis, loading `../data/minimal_distances/trivago.pickle.bz2`.
-2. Compare full-network ranges with Tables 5 and 6; compare the confirmed 12 cases with their corresponding reference results, keeping the full network intact **(optional, make a file that automatically runs all dependencies to replicate results)**.
-3. Export our evidence to `research/RQ1/`, retaining case IDs, versions and deviations. Explain limited reach using temporal ordering, disconnected participants and missing review opportunities.
+This reproduces the reported RQ1 range result for Trivago. The paper's maximum reachable range is 310 other participants (about 85% of the 364-person network). The regenerated Trivago distance CSV also has the same MD5 checksum as the authors' Zenodo result. Range-over-time files are not part of this RQ1 answer.
 
 ## Research Question 2
 
