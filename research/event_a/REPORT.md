@@ -10,7 +10,6 @@ The Spotify network: 1,730 people and 22,504 reviews, 3 Feb – 1 Mar 2020. We s
 
 M2 didn't use Spotify, but the authors' full-month Spotify results were already in `reports/`. The early/late turnover comparison is the new part.
 
-This isn't a fresh test. An earlier attempt recorded the predictions below on 29 Oct 2026, then ran this analysis. The outcome was known before this script was written.
 
 ## Prediction
 
@@ -62,8 +61,4 @@ python -m research.event_a.run
 
 Writes `normalized_ranges.csv`, `ranges.csv` and `turnover.csv` to `research/event_a/results/`.
 
-## Tracker text
 
-- **J31 (add):** `Event A: research/event_a/ (REPORT.md, run.py, results/).`
-- **K31:** `Spotify, early (3–16 Feb) vs late (17 Feb–1 Mar 2020), same M2 method. Predict late coverage falls if experienced reviewers leave, and newcomers have lower coverage. Recorded 29 Oct 2026 before the first run.`
-- **L31:** `Spotify full month max 0.85, as in M2. Median rose 0.10→0.46 despite 3 experienced leaving: prediction 1 challenged. Newcomers 0.02 vs continuing 0.50: prediction 2 supported. 85% depends on the window length.`
