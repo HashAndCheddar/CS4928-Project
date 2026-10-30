@@ -51,6 +51,16 @@ The reproduced values match the Trivago values in Tables 5 and 6 of the paper:
 
 This reproduces the reported RQ1 range result for Trivago. The paper's maximum reachable range is 310 other participants (about 85% of the 364-person network). The regenerated Trivago distance CSV also has the same MD5 checksum as the authors' Zenodo result. Range-over-time files are not part of this RQ1 answer.
 
+## Event A
+
+Event A applies the same coverage measure to the Spotify network and compares participants who stay, leave or join between two 14-day halves of February 2020. See `research/event_a/REPORT.md`.
+
+```bash
+python -m research.event_a.run
+```
+
+The range distributions and turnover table are written to `research/event_a/results/`.
+
 ## Research Question 2
 
 We plan to build a full RAG system with embeddings, vector retrieval and grounded LLM generation. Participants will only retrieve previously encountered information, up to a fixed limit, so we can compare diffusion coverage against the original perfect memory baseline.
