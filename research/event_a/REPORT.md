@@ -53,25 +53,36 @@ Coverage staying the same or rising, or newcomers matching continuing people, wo
 
 People who joined reach about 2% of the network through review, so review alone won't pass design knowledge to them. Applying information hiding and low coupling: keep each module's decisions behind a small, documented interface, so it can be changed with local knowledge.
 
-## Event B (P28)
+## Maintenance checks on the Event A analysis
+
+*These were originally recorded as Event B. Event B is now the RQ2 retrieval-augmented memory extension; see [`research/rq2/REPORT.md`](../rq2/REPORT.md). The checks below are kept unchanged as robustness checks of the Week 9 timing decision and the Event A split.*
 
 **Frozen Week 9 decision:** We kept the authors' review-end-time model. Alternatives were to use review start/end times or individual comment/approval times; those could capture overlap better, but still require assumptions and/or more detailed data. Keeping review end times preserves comparability with RQ1 and Event A. We retain timing as a limitation; the evidence and decision are recorded in the tracker.
 
-**Pre-Event-B prediction:** The tracker predicted that a newcomer switching the analysis from Trivago to Spotify would find the available datasets and code comments sufficient, without needing a structural redesign. This prediction was recorded before the response and is left unchanged.
+**Prediction (recorded before the change):** The tracker predicted that a newcomer switching the analysis from Trivago to Spotify would find the available datasets and code comments sufficient, without needing a structural redesign. This prediction was recorded before the response and is left unchanged.
 
 **Responses and trade-off:** Leave the structure as-is and rely on the current code, or add a general dataset-selection interface. The first avoids unnecessary abstraction; the second makes dataset changes more explicit but adds indirection. We kept the structure and added one local comment at the Spotify network load to flag that the date window must change with the dataset. This small, behavior-neutral clarification avoids a larger refactor. Comments can still become stale.
 
 **Before/after evidence and conclusion:** Before the dataset-switch exercise, `main` loaded Spotify directly, while the review-window dates were defined separately near the top of `run.py`. Its only source change was one comment at that load site; no logic, dependencies, tests, or results changed. The tracker records a newcomer-perspective walkthrough and confirms the datasets are present. This is code-walkthrough evidence, not an independent newcomer study or a build/test comparison. The Week 9 decision to avoid structural change is **supported for that maintenance task**: the dataset switch needs no new architecture, and the comment makes the date-window dependency easier to spot. The review-timing limitation remains.
 
-### Additional Event B exercise: moving the split cutoff
+### Moving the split cutoff
 
 **Pre-change prediction (recorded in the tracker):** A newcomer asked to move `SPLIT` from 17 to 18 February should need to change only the split constant. The main risk is the `[start, end)` boundary rule: reviews on 17 February should move from late to early without a gap or duplicate. The full `[START, END)` period and review-end-time model should remain unchanged. We did not predict whether median coverage would rise or fall because that depends on the reassigned reviews.
 
 **Responses considered:** Make the constant change without a test (smallest edit, but leaves boundary behavior implicit); add a focused boundary test (chosen, documents the existing contract); or add a general configurable-window framework (more flexible, but unnecessary for this one cutoff).
 
-**Response and evidence:** We left the production cutoff and analysis outputs unchanged and added `test/test_event_a.py`, which checks that adjacent windows include the start, assign the split-time review to the late window only, exclude the overall end, and have no overlap. The test passed. A data-only Spotify check simulating the one-day shift moved 973 reviews from late to early: early/late counts changed from 9,703/12,801 to 10,676/11,828, while the full review period was preserved. We did not recompute coverage or overwrite result files.
+**Response and evidence:** We left the production cutoff unchanged and added `test/test_event_a.py`, which checks that adjacent windows include the start, assign the split-time review to the late window only, exclude the overall end, and have no overlap. The test passed. A data-only sensitivity check evaluated splits on 16–19 February without recomputing distances or coverage. Every split preserved the same 22,504 reviews, but the activity cohorts changed with the cutoff:
 
-**Conclusion and trade-off:** This supports the Week 9 choice to keep the original timing model and avoid a broader redesign for a localized cutoff change. The test makes the boundary rule easier to verify, but does not establish that a different split is scientifically preferable or predict its coverage effect. The added test is a small ongoing maintenance cost.
+| Split date | Early/late reviews | Early/late participants | Continuing | Left | Joined |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| 16 Feb | 9,671 / 12,833 | 1,528 / 1,599 | 1,397 | 131 | 202 |
+| 17 Feb (original) | 9,703 / 12,801 | 1,528 / 1,599 | 1,397 | 131 | 202 |
+| 18 Feb | 10,676 / 11,828 | 1,547 / 1,585 | 1,402 | 145 | 183 |
+| 19 Feb | 11,776 / 10,728 | 1,587 / 1,560 | 1,417 | 170 | 143 |
+
+Moving the cutoff from 17 to 18 February reassigns 973 reviews and changes the cohort sizes, even though the full period is unchanged. The counts are saved in [`split_sensitivity.csv`](./results/split_sensitivity.csv). No Event A output files were overwritten.
+
+**Conclusion and trade-off:** The focused test supports keeping the existing window-selection structure rather than adding a general framework. The sensitivity check also shows that turnover cohort sizes depend on the chosen cutoff, so the Event A interpretation should not be treated as split-independent. This does not establish that another cutoff is scientifically preferable; coverage was not recomputed. The added test is a small ongoing maintenance cost.
 
 ## Run
 

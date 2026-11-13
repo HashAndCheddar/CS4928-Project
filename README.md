@@ -61,31 +61,26 @@ python -m research.event_a.run
 
 The range distributions and turnover table are written to `research/event_a/results/`.
 
-## Research Question 2
+## Research Question 2 (Event B)
 
-We plan to build a full RAG system with embeddings, vector retrieval and grounded LLM generation. Participants will only retrieve previously encountered information, up to a fixed limit, so we can compare diffusion coverage against the original perfect memory baseline.
-### Suggested architecture
+RQ2 is our Event B. It compares the paper's perfect-memory baseline with retrieval-augmented memory on the same Trivago network. Each participant starts with one synthetic information item. In each review, a member can retrieve only their **top-5** most relevant known items (by embedding similarity to the review query) and pass those on. A random-5 control and an optional LLM generation step (through OpenRouter, passing on only the items the model cites) are included. The perfect-memory run reproduces the RQ1 range distribution exactly. See `research/rq2/REPORT.md`.
+
+```bash
+python -m research.rq2.run              # no key: local TF-IDF embeddings
+export OPENROUTER_API_KEY=...           # or OPENROUTER_API_KEY=... in a repo-root .env (gitignored)
+python -m research.rq2.run --generate   # OpenRouter embeddings + RAG with LLM generation (cost-capped)
+```
 
 ```text
 research/rq2/
-├── run.py              # run RQ2 experiments
-├── network.py          # adapt review channels and timings
-├── items.py            # information items and review queries
-├── engine.py           # temporal diffusion loop
-├── metrics.py          # coverage and baseline comparisons
-├── memory/
-│   ├── base.py         # common memory interface
-│   ├── perfect.py      # perfect-memory baseline
-│   ├── random_k.py     # bounded random retrieval control
-│   └── rag.py          # bounded semantic retrieval
-├── retrieval/
-│   ├── embedder.py     # cached text embeddings
-│   └── index.py        # retrieve from encountered items only
-├── generation.py       # grounded LLM output and validation
-├── requirements.txt    # RQ2 dependencies
-├── notebooks/
-└── tests/
-results/rq2/            # RQ2 tables, figures and caches
+├── run.py          # conditions, RQ1 check, outputs
+├── diffusion.py    # time-ordered item diffusion; perfect / random-k / RAG / RAG + generation policies
+├── items.py        # seeded synthetic items and review queries
+├── embeddings.py   # OpenRouter embeddings (cached) or TF-IDF fallback
+├── generation.py   # grounded LLM comment, citation validation, response cache
+├── openrouter.py   # API key from env/.env, retries, cost cap
+├── cache/          # embedding and LLM response caches
+└── results/<network>/
 ```
 
 ## Credits
