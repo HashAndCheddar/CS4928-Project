@@ -1,0 +1,22 @@
+{
+  "network": "trivago",
+  "participants": 364,
+  "reviews": 2442,
+  "k": 5,
+  "seed": 0,
+  "embedder": "openrouter",
+  "embedding_model": "openai/text-embedding-3-small",
+  "dimensions": 256,
+  "chat_model": "openai/gpt-4.1-nano",
+  "generation": {
+    "reviews": 1576,
+    "cache_hits": 1248,
+    "unparseable": 0,
+    "invalid_citations": 0,
+    "offered": 12600,
+    "cited": 5297
+  },
+  "openrouter_calls": 328,
+  "openrouter_reported_cost_usd": 0.021568,
+  "rag_within_perfect": true
+}
