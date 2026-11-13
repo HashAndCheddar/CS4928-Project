@@ -75,6 +75,7 @@ def find_experienced(network):
 
 
 def main():
+    # This Event A analysis is Spotify-specific; change the network and date window together.
     spotify = CommunicationNetwork.from_json(ROOT / 'data/networks/spotify.json.bz2')
     early = select_reviews(spotify, START, SPLIT)
     late = select_reviews(spotify, SPLIT, END)
