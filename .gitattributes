@@ -1,2 +1,15 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Keep report sources and figure-input hashes consistent across platforms.
+typst/** text eol=lf
+
+# Generated figures and console logs are reviewed through their source/data.
+typst/figures/*.svg -diff linguist-generated=true
+typst/validation-tests.txt -diff linguist-generated=true
+
+# Never apply text/newline conversion to binary report or experiment files.
+*.pdf binary
+*.png binary
+*.npz binary
+*.bz2 binary

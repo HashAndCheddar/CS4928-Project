@@ -1,0 +1,310 @@
+Final validation: 20 November 2026
+Clean CPython 3.12.14 environment; requirements-verified.txt.
+The external Zenodo test was intentionally skipped without requests/token; see the separate parsed Trivago audit.
+API keys were disabled for these local checks.
+
+$ python -m unittest discover -v
+test_data (test.test_data.TestData.test_data) ... ok
+test_adjacent_windows_assign_split_review_to_late_only (test.test_event_a.SelectReviewsTest.test_adjacent_windows_assign_split_review_to_late_only) ... ok
+test_minimal_distance (test.test_minimal_distances.MinimalPathTest.test_minimal_distance) ... ok
+test_pairwise_minimal_distance (test.test_minimal_distances.MinimalPathTest.test_pairwise_minimal_distance) ... ok
+test_hyperedge_channel_equivalence (test.test_model.CommunicationNetworkTest.test_hyperedge_channel_equivalence) ... ok
+test_pairwise_hyperedge_channel_equivalence (test.test_model.CommunicationNetworkTest.test_pairwise_hyperedge_channel_equivalence) ... ok
+test_pairwise_vertex_participant_equivalence (test.test_model.CommunicationNetworkTest.test_pairwise_vertex_participant_equivalence) ... ok
+test_vertex_participant_equivalence (test.test_model.CommunicationNetworkTest.test_vertex_participant_equivalence) ... ok
+test_with_paramtrization (test.test_model.ParametrizedCommunicationNetworkTest.test_with_paramtrization) ... ok
+test_hyperedges (test.test_model.TimeVaryingHypergraphTest.test_hyperedges) ... ok
+test_timings (test.test_model.TimeVaryingHypergraphTest.test_timings) ... ok
+test_unknown_hyperedge (test.test_model.TimeVaryingHypergraphTest.test_unknown_hyperedge) ... ok
+test_unknown_vertex (test.test_model.TimeVaryingHypergraphTest.test_unknown_vertex) ... ok
+test_vertices (test.test_model.TimeVaryingHypergraphTest.test_vertices) ... ok
+test_results (test.test_results.ResultsTest.test_results) ... skipped 'Skipped because no Zenodo access token was provided.'
+test_bounded_reach_never_exceeds_perfect (test.test_rq2.BoundedMemoryTest.test_bounded_reach_never_exceeds_perfect) ... ok
+test_large_k_equals_perfect (test.test_rq2.BoundedMemoryTest.test_large_k_equals_perfect) ... ok
+test_top_k_breaks_ties_by_index (test.test_rq2.BoundedMemoryTest.test_top_k_breaks_ties_by_index) ... ok
+test_tfidf_rows_are_unit_length_and_related_texts_score_higher (test.test_rq2.EmbeddingsTest.test_tfidf_rows_are_unit_length_and_related_texts_score_higher) ... ok
+test_only_offered_cited_items_pass_and_responses_are_cached (test.test_rq2.GenerationTest.test_only_offered_cited_items_pass_and_responses_are_cached) ... ok
+test_parse_rejects_out_of_range_and_non_integer_citations (test.test_rq2.GenerationTest.test_parse_rejects_out_of_range_and_non_integer_citations) ... ok
+test_skips_llm_when_review_cannot_change_memory (test.test_rq2.GenerationTest.test_skips_llm_when_review_cannot_change_memory) ... ok
+test_items_are_distinct_and_reproducible (test.test_rq2.ItemsTest.test_items_are_distinct_and_reproducible) ... ok
+test_matches_authors_reachability (test.test_rq2.PerfectMemoryTest.test_matches_authors_reachability) ... ok
+test_same_time_reviews_do_not_chain (test.test_rq2.PerfectMemoryTest.test_same_time_reviews_do_not_chain) ... ok
+test_run_simulation_with_hyperedge_dijkstra (test.test_run.RunTest.test_run_simulation_with_hyperedge_dijkstra) ... 
+Find all shortest distances at Trivago:   0%|          | 0/364 [00:00<?, ?it/s]
+Find all shortest distances at Trivago:   0%|          | 1/364 [00:00<02:35,  2.34it/s]
+Find all shortest distances at Trivago:   5%|5         | 20/364 [00:00<00:07, 48.76it/s]
+Find all shortest distances at Trivago:  11%|#1        | 41/364 [00:00<00:03, 90.64it/s]
+Find all shortest distances at Trivago:  18%|#7        | 64/364 [00:00<00:02, 128.20it/s]
+Find all shortest distances at Trivago:  24%|##3       | 87/364 [00:00<00:01, 156.25it/s]
+Find all shortest distances at Trivago:  29%|##9       | 107/364 [00:00<00:01, 167.62it/s]
+Find all shortest distances at Trivago:  35%|###4      | 127/364 [00:01<00:01, 170.73it/s]
+Find all shortest distances at Trivago:  40%|####      | 147/364 [00:01<00:01, 174.32it/s]
+Find all shortest distances at Trivago:  46%|####5     | 166/364 [00:01<00:01, 178.39it/s]
+Find all shortest distances at Trivago:  51%|#####1    | 187/364 [00:01<00:00, 186.24it/s]
+Find all shortest distances at Trivago:  58%|#####8    | 212/364 [00:01<00:00, 204.04it/s]
+Find all shortest distances at Trivago:  64%|######4   | 234/364 [00:01<00:00, 206.63it/s]
+Find all shortest distances at Trivago:  72%|#######1  | 262/364 [00:01<00:00, 227.02it/s]
+Find all shortest distances at Trivago:  79%|#######8  | 286/364 [00:01<00:00, 207.82it/s]
+Find all shortest distances at Trivago:  85%|########4 | 308/364 [00:01<00:00, 207.36it/s]
+Find all shortest distances at Trivago:  91%|######### | 331/364 [00:02<00:00, 212.07it/s]
+Find all shortest distances at Trivago:  97%|#########6| 353/364 [00:02<00:00, 208.54it/s]
+Find all shortest distances at Trivago: 100%|##########| 364/364 [00:02<00:00, 166.67it/s]
+
+Find all fastest distances at Trivago:   0%|          | 0/364 [00:00<?, ?it/s]
+Find all fastest distances at Trivago:   0%|          | 1/364 [00:00<02:20,  2.59it/s]
+Find all fastest distances at Trivago:   3%|3         | 12/364 [00:00<00:11, 31.24it/s]
+Find all fastest distances at Trivago:   6%|6         | 23/364 [00:00<00:06, 51.86it/s]
+Find all fastest distances at Trivago:   9%|9         | 34/364 [00:00<00:04, 66.96it/s]
+Find all fastest distances at Trivago:  13%|#2        | 47/364 [00:00<00:03, 83.24it/s]
+Find all fastest distances at Trivago:  16%|#6        | 60/364 [00:00<00:03, 95.72it/s]
+Find all fastest distances at Trivago:  21%|##        | 76/364 [00:01<00:02, 112.98it/s]
+Find all fastest distances at Trivago:  25%|##5       | 92/364 [00:01<00:02, 123.96it/s]
+Find all fastest distances at Trivago:  29%|##9       | 106/364 [00:01<00:02, 114.60it/s]
+Find all fastest distances at Trivago:  33%|###2      | 119/364 [00:01<00:02, 110.89it/s]
+Find all fastest distances at Trivago:  36%|###6      | 132/364 [00:01<00:02, 113.99it/s]
+Find all fastest distances at Trivago:  40%|###9      | 144/364 [00:01<00:01, 114.08it/s]
+Find all fastest distances at Trivago:  43%|####2     | 156/364 [00:01<00:01, 104.88it/s]
+Find all fastest distances at Trivago:  47%|####6     | 171/364 [00:01<00:01, 115.74it/s]
+Find all fastest distances at Trivago:  51%|#####     | 185/364 [00:01<00:01, 121.80it/s]
+Find all fastest distances at Trivago:  55%|#####4    | 199/364 [00:02<00:01, 126.30it/s]
+Find all fastest distances at Trivago:  59%|#####8    | 213/364 [00:02<00:01, 129.86it/s]
+Find all fastest distances at Trivago:  63%|######2   | 229/364 [00:02<00:01, 132.62it/s]
+Find all fastest distances at Trivago:  67%|######6   | 243/364 [00:02<00:00, 131.77it/s]
+Find all fastest distances at Trivago:  71%|#######   | 258/364 [00:02<00:00, 135.11it/s]
+Find all fastest distances at Trivago:  75%|#######4  | 272/364 [00:02<00:00, 117.80it/s]
+Find all fastest distances at Trivago:  78%|#######8  | 285/364 [00:02<00:00, 113.32it/s]
+Find all fastest distances at Trivago:  82%|########2 | 300/364 [00:02<00:00, 120.82it/s]
+Find all fastest distances at Trivago:  86%|########5 | 313/364 [00:02<00:00, 122.67it/s]
+Find all fastest distances at Trivago:  90%|########9 | 326/364 [00:03<00:00, 115.65it/s]
+Find all fastest distances at Trivago:  94%|#########3| 342/364 [00:03<00:00, 126.17it/s]
+Find all fastest distances at Trivago:  98%|#########7| 355/364 [00:03<00:00, 123.69it/s]
+Find all fastest distances at Trivago: 100%|##########| 364/364 [00:03<00:00, 106.91it/s]
+
+Find all foremost distances at Trivago:   0%|          | 0/364 [00:00<?, ?it/s]
+Find all foremost distances at Trivago:   0%|          | 1/364 [00:00<02:13,  2.73it/s]
+Find all foremost distances at Trivago:   5%|4         | 17/364 [00:00<00:07, 46.26it/s]
+Find all foremost distances at Trivago:   9%|8         | 32/364 [00:00<00:04, 74.65it/s]
+Find all foremost distances at Trivago:  15%|#4        | 53/364 [00:00<00:02, 111.06it/s]
+Find all foremost distances at Trivago:  21%|##        | 76/364 [00:00<00:01, 144.20it/s]
+Find all foremost distances at Trivago:  26%|##5       | 94/364 [00:00<00:01, 153.01it/s]
+Find all foremost distances at Trivago:  32%|###1      | 115/364 [00:00<00:01, 167.64it/s]
+Find all foremost distances at Trivago:  37%|###6      | 134/364 [00:01<00:01, 169.16it/s]
+Find all foremost distances at Trivago:  42%|####2     | 153/364 [00:01<00:01, 160.68it/s]
+Find all foremost distances at Trivago:  47%|####6     | 171/364 [00:01<00:01, 164.04it/s]
+Find all foremost distances at Trivago:  52%|#####2    | 191/364 [00:01<00:00, 173.47it/s]
+Find all foremost distances at Trivago:  58%|#####8    | 212/364 [00:01<00:00, 181.35it/s]
+Find all foremost distances at Trivago:  63%|######3   | 231/364 [00:01<00:00, 183.81it/s]
+Find all foremost distances at Trivago:  69%|######9   | 252/364 [00:01<00:00, 187.66it/s]
+Find all foremost distances at Trivago:  74%|#######4  | 271/364 [00:01<00:00, 186.69it/s]
+Find all foremost distances at Trivago:  80%|#######9  | 290/364 [00:01<00:00, 175.15it/s]
+Find all foremost distances at Trivago:  85%|########4 | 308/364 [00:02<00:00, 174.92it/s]
+Find all foremost distances at Trivago:  90%|########9 | 326/364 [00:02<00:00, 173.95it/s]
+Find all foremost distances at Trivago:  95%|#########4| 345/364 [00:02<00:00, 176.23it/s]
+Find all foremost distances at Trivago: 100%|##########| 364/364 [00:02<00:00, 174.47it/s]
+Find all foremost distances at Trivago: 100%|##########| 364/364 [00:02<00:00, 151.49it/s]
+ok
+test_run_simulation_with_vertex_dijkstra (test.test_run.RunTest.test_run_simulation_with_vertex_dijkstra) ... <class 'pandas.DataFrame'>
+MultiIndex: 82208 entries, ('1008229224', '1011753262') to ('985082707', '875698017')
+Data columns (total 3 columns):
+ #   Column    Non-Null Count  Dtype          
+---  ------    --------------  -----          
+ 0   shortest  82208 non-null  int64          
+ 1   fastest   82208 non-null  timedelta64[us]
+ 2   foremost  82208 non-null  datetime64[us] 
+dtypes: datetime64[us](1), int64(1), timedelta64[us](1)
+memory usage: 2.2 MB
+
+Find all shortest distances at Trivago:   0%|          | 0/364 [00:00<?, ?it/s]
+Find all shortest distances at Trivago:   0%|          | 1/364 [00:00<02:11,  2.76it/s]
+Find all shortest distances at Trivago:   2%|1         | 7/364 [00:00<00:19, 18.61it/s]
+Find all shortest distances at Trivago:   4%|3         | 14/364 [00:00<00:10, 32.82it/s]
+Find all shortest distances at Trivago:   6%|6         | 23/364 [00:00<00:07, 47.44it/s]
+Find all shortest distances at Trivago:   8%|8         | 30/364 [00:00<00:06, 48.91it/s]
+Find all shortest distances at Trivago:  11%|#1        | 41/364 [00:00<00:04, 65.01it/s]
+Find all shortest distances at Trivago:  13%|#3        | 49/364 [00:01<00:04, 65.07it/s]
+Find all shortest distances at Trivago:  16%|#6        | 59/364 [00:01<00:04, 74.42it/s]
+Find all shortest distances at Trivago:  20%|#9        | 72/364 [00:01<00:03, 88.01it/s]
+Find all shortest distances at Trivago:  23%|##2       | 82/364 [00:01<00:03, 83.71it/s]
+Find all shortest distances at Trivago:  25%|##5       | 92/364 [00:01<00:03, 86.40it/s]
+Find all shortest distances at Trivago:  28%|##7       | 101/364 [00:01<00:03, 81.86it/s]
+Find all shortest distances at Trivago:  30%|###       | 110/364 [00:01<00:03, 80.41it/s]
+Find all shortest distances at Trivago:  33%|###2      | 119/364 [00:01<00:03, 68.78it/s]
+Find all shortest distances at Trivago:  36%|###5      | 131/364 [00:02<00:03, 77.65it/s]
+Find all shortest distances at Trivago:  38%|###8      | 140/364 [00:02<00:03, 72.61it/s]
+Find all shortest distances at Trivago:  41%|####      | 148/364 [00:02<00:03, 68.51it/s]
+Find all shortest distances at Trivago:  43%|####2     | 156/364 [00:02<00:03, 68.14it/s]
+Find all shortest distances at Trivago:  45%|####5     | 164/364 [00:02<00:02, 71.04it/s]
+Find all shortest distances at Trivago:  47%|####7     | 172/364 [00:02<00:02, 68.23it/s]
+Find all shortest distances at Trivago:  49%|####9     | 180/364 [00:02<00:02, 71.23it/s]
+Find all shortest distances at Trivago:  53%|#####3    | 194/364 [00:02<00:01, 86.54it/s]
+Find all shortest distances at Trivago:  56%|#####5    | 203/364 [00:02<00:01, 83.75it/s]
+Find all shortest distances at Trivago:  58%|#####8    | 212/364 [00:03<00:01, 81.43it/s]
+Find all shortest distances at Trivago:  61%|######    | 221/364 [00:03<00:01, 80.05it/s]
+Find all shortest distances at Trivago:  63%|######3   | 230/364 [00:03<00:01, 76.04it/s]
+Find all shortest distances at Trivago:  66%|######6   | 242/364 [00:03<00:01, 84.69it/s]
+Find all shortest distances at Trivago:  69%|######8   | 251/364 [00:03<00:01, 85.60it/s]
+Find all shortest distances at Trivago:  71%|#######1  | 260/364 [00:03<00:01, 83.35it/s]
+Find all shortest distances at Trivago:  74%|#######3  | 269/364 [00:03<00:01, 73.41it/s]
+Find all shortest distances at Trivago:  76%|#######6  | 277/364 [00:03<00:01, 74.74it/s]
+Find all shortest distances at Trivago:  78%|#######8  | 285/364 [00:04<00:01, 70.44it/s]
+Find all shortest distances at Trivago:  81%|########1 | 295/364 [00:04<00:00, 74.59it/s]
+Find all shortest distances at Trivago:  84%|########3 | 304/364 [00:04<00:00, 78.23it/s]
+Find all shortest distances at Trivago:  86%|########5 | 312/364 [00:04<00:00, 77.11it/s]
+Find all shortest distances at Trivago:  88%|########7 | 320/364 [00:04<00:00, 73.99it/s]
+Find all shortest distances at Trivago:  91%|#########1| 333/364 [00:04<00:00, 81.68it/s]
+Find all shortest distances at Trivago:  94%|#########4| 343/364 [00:04<00:00, 77.75it/s]
+Find all shortest distances at Trivago:  96%|#########6| 351/364 [00:04<00:00, 78.01it/s]
+Find all shortest distances at Trivago: 100%|#########9| 363/364 [00:05<00:00, 73.68it/s]
+Find all shortest distances at Trivago: 100%|##########| 364/364 [00:05<00:00, 71.16it/s]
+
+Find all fastest distances at Trivago:   0%|          | 0/364 [00:00<?, ?it/s]
+Find all fastest distances at Trivago:   0%|          | 1/364 [00:00<02:27,  2.45it/s]
+Find all fastest distances at Trivago:   1%|1         | 5/364 [00:00<00:33, 10.67it/s]
+Find all fastest distances at Trivago:   3%|3         | 11/364 [00:00<00:16, 21.35it/s]
+Find all fastest distances at Trivago:   4%|4         | 15/364 [00:00<00:14, 23.65it/s]
+Find all fastest distances at Trivago:   5%|5         | 19/364 [00:00<00:12, 27.37it/s]
+Find all fastest distances at Trivago:   6%|6         | 23/364 [00:01<00:12, 27.80it/s]
+Find all fastest distances at Trivago:   8%|7         | 28/364 [00:01<00:11, 30.37it/s]
+Find all fastest distances at Trivago:   9%|8         | 32/364 [00:01<00:10, 31.15it/s]
+Find all fastest distances at Trivago:  10%|9         | 36/364 [00:01<00:11, 29.67it/s]
+Find all fastest distances at Trivago:  13%|#2        | 46/364 [00:01<00:07, 45.36it/s]
+Find all fastest distances at Trivago:  14%|#4        | 51/364 [00:01<00:09, 33.27it/s]
+Find all fastest distances at Trivago:  15%|#5        | 56/364 [00:01<00:08, 34.49it/s]
+Find all fastest distances at Trivago:  18%|#7        | 64/364 [00:02<00:07, 42.13it/s]
+Find all fastest distances at Trivago:  20%|##        | 73/364 [00:02<00:06, 48.12it/s]
+Find all fastest distances at Trivago:  22%|##1       | 79/364 [00:02<00:06, 43.77it/s]
+Find all fastest distances at Trivago:  24%|##3       | 87/364 [00:02<00:05, 49.27it/s]
+Find all fastest distances at Trivago:  26%|##5       | 93/364 [00:02<00:06, 42.04it/s]
+Find all fastest distances at Trivago:  27%|##6       | 98/364 [00:02<00:06, 38.85it/s]
+Find all fastest distances at Trivago:  28%|##8       | 103/364 [00:03<00:06, 38.62it/s]
+Find all fastest distances at Trivago:  30%|##9       | 108/364 [00:03<00:06, 36.86it/s]
+Find all fastest distances at Trivago:  31%|###       | 112/364 [00:03<00:06, 36.46it/s]
+Find all fastest distances at Trivago:  32%|###1      | 116/364 [00:03<00:07, 34.07it/s]
+Find all fastest distances at Trivago:  33%|###2      | 120/364 [00:03<00:08, 29.06it/s]
+Find all fastest distances at Trivago:  34%|###4      | 125/364 [00:03<00:07, 30.88it/s]
+Find all fastest distances at Trivago:  36%|###6      | 132/364 [00:03<00:06, 37.52it/s]
+Find all fastest distances at Trivago:  37%|###7      | 136/364 [00:04<00:06, 37.60it/s]
+Find all fastest distances at Trivago:  39%|###8      | 141/364 [00:04<00:05, 38.44it/s]
+Find all fastest distances at Trivago:  40%|###9      | 145/364 [00:04<00:06, 31.49it/s]
+Find all fastest distances at Trivago:  41%|####      | 149/364 [00:04<00:07, 28.74it/s]
+Find all fastest distances at Trivago:  42%|####2     | 153/364 [00:04<00:07, 27.72it/s]
+Find all fastest distances at Trivago:  44%|####3     | 159/364 [00:04<00:05, 34.49it/s]
+Find all fastest distances at Trivago:  45%|####4     | 163/364 [00:04<00:05, 33.53it/s]
+Find all fastest distances at Trivago:  47%|####6     | 170/364 [00:05<00:04, 39.33it/s]
+Find all fastest distances at Trivago:  48%|####8     | 175/364 [00:05<00:04, 38.53it/s]
+Find all fastest distances at Trivago:  51%|#####     | 184/364 [00:05<00:03, 47.18it/s]
+Find all fastest distances at Trivago:  52%|#####2    | 191/364 [00:05<00:03, 50.45it/s]
+Find all fastest distances at Trivago:  54%|#####4    | 197/364 [00:05<00:03, 50.14it/s]
+Find all fastest distances at Trivago:  56%|#####5    | 203/364 [00:05<00:03, 51.08it/s]
+Find all fastest distances at Trivago:  58%|#####7    | 210/364 [00:05<00:02, 52.42it/s]
+Find all fastest distances at Trivago:  60%|#####9    | 217/364 [00:05<00:03, 45.26it/s]
+Find all fastest distances at Trivago:  62%|######1   | 224/364 [00:06<00:02, 49.45it/s]
+Find all fastest distances at Trivago:  63%|######3   | 230/364 [00:06<00:03, 41.90it/s]
+Find all fastest distances at Trivago:  65%|######4   | 235/364 [00:06<00:03, 40.82it/s]
+Find all fastest distances at Trivago:  67%|######7   | 244/364 [00:06<00:02, 50.69it/s]
+Find all fastest distances at Trivago:  69%|######8   | 250/364 [00:06<00:02, 48.46it/s]
+Find all fastest distances at Trivago:  71%|#######   | 257/364 [00:06<00:02, 46.42it/s]
+Find all fastest distances at Trivago:  72%|#######2  | 263/364 [00:06<00:02, 42.51it/s]
+Find all fastest distances at Trivago:  74%|#######3  | 268/364 [00:07<00:02, 43.03it/s]
+Find all fastest distances at Trivago:  75%|#######5  | 273/364 [00:07<00:02, 37.52it/s]
+Find all fastest distances at Trivago:  77%|#######6  | 280/364 [00:07<00:02, 41.86it/s]
+Find all fastest distances at Trivago:  78%|#######8  | 285/364 [00:07<00:02, 34.66it/s]
+Find all fastest distances at Trivago:  80%|########  | 293/364 [00:07<00:01, 43.28it/s]
+Find all fastest distances at Trivago:  82%|########1 | 298/364 [00:07<00:01, 40.22it/s]
+Find all fastest distances at Trivago:  84%|########3 | 304/364 [00:08<00:01, 43.59it/s]
+Find all fastest distances at Trivago:  85%|########4 | 309/364 [00:08<00:01, 43.45it/s]
+Find all fastest distances at Trivago:  87%|########7 | 317/364 [00:08<00:01, 42.18it/s]
+Find all fastest distances at Trivago:  88%|########8 | 322/364 [00:08<00:01, 37.78it/s]
+Find all fastest distances at Trivago:  91%|#########1| 332/364 [00:08<00:00, 45.41it/s]
+Find all fastest distances at Trivago:  93%|#########2| 337/364 [00:08<00:00, 41.05it/s]
+Find all fastest distances at Trivago:  94%|#########3| 342/364 [00:08<00:00, 41.97it/s]
+Find all fastest distances at Trivago:  95%|#########5| 347/364 [00:09<00:00, 43.24it/s]
+Find all fastest distances at Trivago:  97%|#########6| 352/364 [00:09<00:00, 40.71it/s]
+Find all fastest distances at Trivago:  99%|#########8| 359/364 [00:09<00:00, 47.58it/s]
+Find all fastest distances at Trivago: 100%|##########| 364/364 [00:09<00:00, 31.58it/s]
+Find all fastest distances at Trivago: 100%|##########| 364/364 [00:09<00:00, 38.01it/s]
+
+Find all foremost distances at Trivago:   0%|          | 0/364 [00:00<?, ?it/s]
+Find all foremost distances at Trivago:   0%|          | 1/364 [00:00<02:12,  2.74it/s]
+Find all foremost distances at Trivago:   1%|1         | 5/364 [00:00<00:27, 13.13it/s]
+Find all foremost distances at Trivago:   4%|4         | 16/364 [00:00<00:09, 35.91it/s]
+Find all foremost distances at Trivago:   6%|6         | 23/364 [00:00<00:07, 42.96it/s]
+Find all foremost distances at Trivago:   8%|7         | 29/364 [00:00<00:07, 45.27it/s]
+Find all foremost distances at Trivago:  10%|#         | 38/364 [00:00<00:06, 52.89it/s]
+Find all foremost distances at Trivago:  13%|#2        | 47/364 [00:01<00:05, 61.78it/s]
+Find all foremost distances at Trivago:  15%|#5        | 55/364 [00:01<00:04, 63.99it/s]
+Find all foremost distances at Trivago:  18%|#7        | 64/364 [00:01<00:04, 69.45it/s]
+Find all foremost distances at Trivago:  20%|##        | 74/364 [00:01<00:03, 76.48it/s]
+Find all foremost distances at Trivago:  23%|##2       | 82/364 [00:01<00:03, 72.90it/s]
+Find all foremost distances at Trivago:  25%|##5       | 92/364 [00:01<00:03, 77.91it/s]
+Find all foremost distances at Trivago:  27%|##7       | 100/364 [00:01<00:03, 72.06it/s]
+Find all foremost distances at Trivago:  30%|##9       | 109/364 [00:01<00:03, 69.82it/s]
+Find all foremost distances at Trivago:  32%|###2      | 117/364 [00:02<00:03, 61.83it/s]
+Find all foremost distances at Trivago:  35%|###4      | 126/364 [00:02<00:03, 65.54it/s]
+Find all foremost distances at Trivago:  37%|###7      | 136/364 [00:02<00:03, 71.28it/s]
+Find all foremost distances at Trivago:  40%|###9      | 144/364 [00:02<00:03, 64.59it/s]
+Find all foremost distances at Trivago:  41%|####1     | 151/364 [00:02<00:03, 54.19it/s]
+Find all foremost distances at Trivago:  44%|####3     | 160/364 [00:02<00:03, 60.22it/s]
+Find all foremost distances at Trivago:  46%|####6     | 169/364 [00:02<00:03, 63.64it/s]
+Find all foremost distances at Trivago:  48%|####8     | 176/364 [00:03<00:03, 60.23it/s]
+Find all foremost distances at Trivago:  51%|#####1    | 186/364 [00:03<00:02, 68.98it/s]
+Find all foremost distances at Trivago:  54%|#####3    | 195/364 [00:03<00:02, 73.84it/s]
+Find all foremost distances at Trivago:  56%|#####5    | 203/364 [00:03<00:02, 73.17it/s]
+Find all foremost distances at Trivago:  58%|#####8    | 212/364 [00:03<00:02, 74.36it/s]
+Find all foremost distances at Trivago:  60%|######    | 220/364 [00:03<00:01, 74.78it/s]
+Find all foremost distances at Trivago:  63%|######2   | 229/364 [00:03<00:01, 73.62it/s]
+Find all foremost distances at Trivago:  65%|######5   | 238/364 [00:03<00:01, 77.59it/s]
+Find all foremost distances at Trivago:  68%|######8   | 248/364 [00:03<00:01, 83.76it/s]
+Find all foremost distances at Trivago:  71%|#######   | 257/364 [00:04<00:01, 82.88it/s]
+Find all foremost distances at Trivago:  73%|#######3  | 266/364 [00:04<00:01, 70.74it/s]
+Find all foremost distances at Trivago:  75%|#######5  | 274/364 [00:04<00:01, 68.98it/s]
+Find all foremost distances at Trivago:  77%|#######7  | 282/364 [00:04<00:01, 61.45it/s]
+Find all foremost distances at Trivago:  80%|########  | 293/364 [00:04<00:00, 72.21it/s]
+Find all foremost distances at Trivago:  83%|########2 | 301/364 [00:04<00:00, 69.28it/s]
+Find all foremost distances at Trivago:  85%|########4 | 309/364 [00:04<00:00, 68.92it/s]
+Find all foremost distances at Trivago:  87%|########7 | 317/364 [00:05<00:00, 58.43it/s]
+Find all foremost distances at Trivago:  90%|########9 | 327/364 [00:05<00:00, 67.34it/s]
+Find all foremost distances at Trivago:  92%|#########2| 335/364 [00:05<00:00, 65.46it/s]
+Find all foremost distances at Trivago:  95%|#########4| 344/364 [00:05<00:00, 69.49it/s]
+Find all foremost distances at Trivago:  97%|#########6| 352/364 [00:05<00:00, 66.16it/s]
+Find all foremost distances at Trivago: 100%|#########9| 363/364 [00:05<00:00, 64.85it/s]
+Find all foremost distances at Trivago: 100%|##########| 364/364 [00:05<00:00, 63.54it/s]
+ok
+
+----------------------------------------------------------------------
+Ran 27 tests in 34.018s
+
+OK (skipped=1)
+<class 'pandas.DataFrame'>
+MultiIndex: 82208 entries, ('1008229224', '1011753262') to ('985082707', '875698017')
+Data columns (total 3 columns):
+ #   Column    Non-Null Count  Dtype          
+---  ------    --------------  -----          
+ 0   shortest  82208 non-null  int64          
+ 1   fastest   82208 non-null  timedelta64[us]
+ 2   foremost  82208 non-null  datetime64[us] 
+dtypes: datetime64[us](1), int64(1), timedelta64[us](1)
+memory usage: 2.2 MB
+
+
+$ python -m research.rq2.replay
+trivago: 364 participants, 2442 reviews, k=5.
+
+RAG + generation:   0%|          | 0/2442 [00:00<?, ?review/s]
+RAG + generation:   0%|          | 1/2442 [00:00<20:03,  2.03review/s]
+RAG + generation:  69%|######8   | 1681/2442 [00:00<00:00, 3772.45review/s]
+RAG + generation: 100%|##########| 2442/2442 [00:00<00:00, 3822.51review/s]
+  perfect: done
+  random_5: done
+  rag_5: done
+  rag_5_generation: done
+Perfect memory reproduces the RQ1 Trivago range distribution exactly.
+                   max  median  mean  top_0.7  top_0.5  top_0.3  top_0.1
+condition                                                               
+perfect           0.85    0.73  0.62     0.67     0.72     0.81     0.83
+random_5          0.49    0.10  0.12     0.04     0.09     0.16     0.24
+rag_5             0.62    0.04  0.07     0.01     0.03     0.06     0.17
+rag_5_generation  0.35    0.02  0.04     0.00     0.01     0.03     0.10
+Results written to _reproduction\rq2-20261120T083614772208Z\results\trivago.
+PASS: all saved CSV values matched; no API calls; committed inputs unchanged.
+Verification: _reproduction\rq2-20261120T083614772208Z\verification.json

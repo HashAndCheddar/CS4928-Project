@@ -1,0 +1,30 @@
+{
+  "repository_commit": "40f8c8556f11cbc9d8e38a7cd3aac6b12a0adb20",
+  "sources": [
+    {
+      "file": "data/event_a_turnover.csv",
+      "source_url": "https://github.com/HashAndCheddar/CS4928-Project/blob/40f8c8556f11cbc9d8e38a7cd3aac6b12a0adb20/research/event_a/results/turnover.csv",
+      "sha256": "c3ed497f363e26b7c95ee6ef19f36a837a0445f9d63dff59a070a9662e1838fa"
+    },
+    {
+      "file": "data/event_a_split_sensitivity.csv",
+      "source_url": "https://github.com/HashAndCheddar/CS4928-Project/blob/40f8c8556f11cbc9d8e38a7cd3aac6b12a0adb20/research/event_a/results/split_sensitivity.csv",
+      "sha256": "6f8a8bd920e284f184f9565f07a93542b04613b7101351542f6eb2c7763d7ce9"
+    },
+    {
+      "file": "data/rq2_coverage.csv",
+      "source_url": "https://github.com/HashAndCheddar/CS4928-Project/blob/40f8c8556f11cbc9d8e38a7cd3aac6b12a0adb20/research/rq2/results/trivago/coverage.csv",
+      "sha256": "6808e762ec650c0dbd83f71865334503d2b2e4a16c6f5cd7a4ad00de65d1f6ef"
+    },
+    {
+      "file": "data/rq2_summary.csv",
+      "source_url": "https://github.com/HashAndCheddar/CS4928-Project/blob/40f8c8556f11cbc9d8e38a7cd3aac6b12a0adb20/research/rq2/results/trivago/summary.csv",
+      "sha256": "4ca4192ec8063ee66f7248fec2e708fa229647443656c90bbc669c1731f87dd1"
+    }
+  ],
+  "notes": [
+    "Graphs are derived from saved outputs; no new experiment was performed.",
+    "Event A cohorts measure review activity, not employment.",
+    "RQ2 ECDF uses all 364 saved per-note coverage rows, not confidence intervals."
+  ]
+}

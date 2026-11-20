@@ -159,3 +159,6 @@ data/minimal_distances/
 
 
 *.DS\_Store
+
+# Isolated replay outputs (keep original results intact)
+_reproduction/

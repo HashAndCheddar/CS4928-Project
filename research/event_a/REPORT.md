@@ -6,7 +6,7 @@ M2 (`da17616`, `M2_REPRO`): all of Trivago, 364 people, 2,442 reviews. Max cover
 
 ## Material
 
-The Spotify network: 1,730 people and 22,504 reviews, 3 Feb – 1 Mar 2020. We split it by review end time into early (3–16 Feb) and late (17 Feb – 1 Mar).
+The Spotify network: 1,730 people and 22,504 reviews, 3 Feb â€“ 1 Mar 2020. We split it by review end time into early (3â€“16 Feb) and late (17 Feb â€“ 1 Mar).
 
 M2 didn't use Spotify, but the authors' full-month Spotify results were already in `reports/`. The early/late turnover comparison is the new part.
 
@@ -37,8 +37,8 @@ Coverage staying the same or rising, or newcomers matching continuing people, wo
 | Group | People | Experienced | Early median | Late median |
 | --- | ---: | ---: | ---: | ---: |
 | Continuing | 1,397 | 379 | 0.12 | 0.50 |
-| Left | 131 | 3 | 0.01 | – |
-| Joined | 202 | 0 | – | 0.02 |
+| Left | 131 | 3 | 0.01 | â€“ |
+| Joined | 202 | 0 | â€“ | 0.02 |
 
 - **Prediction 1 is challenged.** Coverage rose from 0.10 to 0.46 although 3 experienced people left.
 - **Prediction 2 is supported.** People who joined have median coverage 0.02, against 0.50 for continuing people.
@@ -51,11 +51,11 @@ Coverage staying the same or rising, or newcomers matching continuing people, wo
 
 ## Design implication
 
-People who joined reach about 2% of the network through review, so review alone won't pass design knowledge to them. Applying information hiding and low coupling: keep each module's decisions behind a small, documented interface, so it can be changed with local knowledge.
+Late-only participants have low outward reach, but this does not measure the information they receive or establish that review fails to teach them. The design implication is to make maintenance knowledge explicit behind small, documented interfaces, so local changes depend less on implicit review history. An onboarding benefit was not measured.
 
 ## Maintenance checks on the Event A analysis
 
-*These were originally recorded as Event B. Event B is now the RQ2 retrieval-augmented memory extension; see [`research/rq2/REPORT.md`](../rq2/REPORT.md). The checks below are kept unchanged as robustness checks of the Week 9 timing decision and the Event A split.*
+*Clarification added during final synthesis, 20 November 2026: the official Event B concerns newcomer maintenance. The checks below are the relevant existing maintenance response; the RAG extension is RQ2. See the [dedicated Event B account](../event_b/REPORT.md). The earlier account is retained below. Its claims about prediction timing are not independently established by the supplied workbook snapshot. The team reports readability retrospectively, without retained timings or walkthrough notes.*
 
 **Frozen Week 9 decision:** We kept the authors' review-end-time model. Alternatives were to use review start/end times or individual comment/approval times; those could capture overlap better, but still require assumptions and/or more detailed data. Keeping review end times preserves comparability with RQ1 and Event A. We retain timing as a limitation; the evidence and decision are recorded in the tracker.
 
@@ -71,7 +71,7 @@ People who joined reach about 2% of the network through review, so review alone 
 
 **Responses considered:** Make the constant change without a test (smallest edit, but leaves boundary behavior implicit); add a focused boundary test (chosen, documents the existing contract); or add a general configurable-window framework (more flexible, but unnecessary for this one cutoff).
 
-**Response and evidence:** We left the production cutoff unchanged and added `test/test_event_a.py`, which checks that adjacent windows include the start, assign the split-time review to the late window only, exclude the overall end, and have no overlap. The test passed. A data-only sensitivity check evaluated splits on 16–19 February without recomputing distances or coverage. Every split preserved the same 22,504 reviews, but the activity cohorts changed with the cutoff:
+**Response and evidence:** We left the production cutoff unchanged and added `test/test_event_a.py`, which checks that adjacent windows include the start, assign the split-time review to the late window only, exclude the overall end, and have no overlap. The test passed. A data-only sensitivity check evaluated splits on 16â€“19 February without recomputing distances or coverage. Every split preserved the same 22,504 reviews, but the activity cohorts changed with the cutoff:
 
 | Split date | Early/late reviews | Early/late participants | Continuing | Left | Joined |
 | --- | ---: | ---: | ---: | ---: | ---: |

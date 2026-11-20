@@ -1,8 +1,8 @@
-# RQ2 / Event B: retrieval-augmented memory (G27 / P28)
+# RQ2: retrieval-augmented memory (G27 / P28)
 
 **RQ2:** How does Retrieval Augmented memory affect information diffusion coverage compared to the paper's perfect memory baseline when participants can retrieve only a fixed amount of previously encountered information items in a code review network?
 
-Event B is this extension. It changes the paper's model, which assumes every participant remembers and passes on everything they have ever seen.
+Final-synthesis clarification, 20 November 2026: this is the RQ2 extension. Earlier commits called it Event B, but the official Event B concerns [newcomer maintenance](../event_b/REPORT.md). This extension changes the perfect-sharing assumption while leaving the original reproduction available.
 
 ## Prediction (recorded in the tracker before the change)
 
@@ -22,7 +22,7 @@ The RAG system should perform at least equal to, or slightly worse than, perfect
 
 ## Validation
 
-Perfect memory reproduces the RQ1 result exactly. Its range distribution equals `research/rq1/results/normalized_ranges.csv` row for row; the run checks this and stops if it does not. Its Table 5 rows are 0.67 / 0.72 / 0.81 / 0.83 / max 0.85, the paper's values. Unit tests (`test/test_rq2.py`) check the following:
+Perfect-memory reachability is checked against the original algorithm in unit tests. The runner also compares its cumulative range distribution with `research/rq1/results/normalized_ranges.csv` using `np.allclose` (atol=1e-6 and the default relative tolerance), and stops if that numerical check fails. This is not a byte-identity check or the separate source-level 1e-7 criterion recorded in the tracker. Its Table 5 rows are 0.67 / 0.72 / 0.81 / 0.83 / max 0.85, the paper's values. Unit tests (`test/test_rq2.py`) check the following:
 
 - On 25 random networks with many same-time reviews, perfect memory reaches the same set as the authors' `single_source_dijkstra_hyperedges`.
 - Bounded memory never reaches more than perfect memory.
@@ -35,7 +35,7 @@ The embeddings were OpenRouter `openai/text-embedding-3-small` (256 dimensions),
 
 Each `top_q` column shows the largest coverage value that at least that fraction of notes exceeds. This is the same rule as the paper's Table 5.
 
-| Condition | Max | Median | Mean | top 0.7 | top 0.5 | top 0.3 | top 0.1 | Notes reaching ≥ 0.5 | Notes reaching nobody |
+| Condition | Max | Median | Mean | top 0.7 | top 0.5 | top 0.3 | top 0.1 | Notes reaching â‰¥ 0.5 | Notes reaching nobody |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
 | Perfect memory | 0.85 | 0.73 | 0.62 | 0.67 | 0.72 | 0.81 | 0.83 | 285 / 364 | 7 |
 | Random-5 (control) | 0.49 | 0.10 | 0.12 | 0.04 | 0.09 | 0.16 | 0.24 | 0 / 364 | 7 |
@@ -79,3 +79,5 @@ python -m research.rq2.run --generate       # OpenRouter embeddings + RAG with g
 ```
 
 Options: `--k`, `--seed`, `--embedder {auto,openrouter,tfidf}`, `--embedding-model` (default `openai/text-embedding-3-small`, 256 dimensions), `--chat-model` (default `openai/gpt-4.1-nano`) and `--max-cost` (USD cap on OpenRouter-reported cost, default 1.00). Caches are written to `research/rq2/cache/`. Commit them to make the OpenRouter results reproducible without a key.
+
+For a checked cache-only replay that preserves the committed outputs and ignores API keys, use `python -m research.rq2.replay`. See the root README for the pinned environment and verification behaviour.

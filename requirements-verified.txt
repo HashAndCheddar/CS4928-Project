@@ -1,0 +1,8 @@
+# Later validation environment: CPython 3.12.14 on Windows.
+# This records a tested environment; it does not reconstruct the original run.
+numpy==2.5.5
+pandas==3.0.1
+tqdm==4.70.1
+python-dateutil==4.0.0
+tzdata==2026.6
+colorama==0.4.6; platform_system == "Windows"

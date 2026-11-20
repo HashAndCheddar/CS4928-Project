@@ -1,0 +1,63 @@
+{
+  "passed": true,
+  "parsed_csvs_identical": [
+    "coverage.csv",
+    "normalized_ranges.csv",
+    "ranges.csv",
+    "summary.csv"
+  ],
+  "committed_inputs_unchanged": true,
+  "input_sha256": {
+    "research\\rq2\\cache\\embeddings-openai_text-embedding-3-small-256.npz": "a028bab2f6827660fb59a05b1af853a6a0adff56a6ebc75cc3309a4003203a6e",
+    "research\\rq2\\cache\\generation-openai_gpt-4.1-nano.jsonl": "f140aa7f3061c965a7ed98f86e768fdea9933615f6c222c4daba5905c6cf12a2",
+    "research\\rq2\\results\\trivago\\coverage.csv": "6808e762ec650c0dbd83f71865334503d2b2e4a16c6f5cd7a4ad00de65d1f6ef",
+    "research\\rq2\\results\\trivago\\normalized_ranges.csv": "3030741d50f9920e6e2f2be85f1ce4f050e0ccb3d855ed32e0ea4ca2d9f2eca5",
+    "research\\rq2\\results\\trivago\\ranges.csv": "0eea3adc163bc90bfdff7b3c03dea28c864775293af5a1363db701fb3401b6ed",
+    "research\\rq2\\results\\trivago\\summary.csv": "4ca4192ec8063ee66f7248fec2e708fa229647443656c90bbc669c1731f87dd1",
+    "research\\rq2\\results\\trivago\\run.json": "49c6a652662187d7b399404b1df9f39a3b80b9ed27ba138d71d495afbe6c767a"
+  },
+  "original_run_metadata": {
+    "network": "trivago",
+    "participants": 364,
+    "reviews": 2442,
+    "k": 5,
+    "seed": 0,
+    "embedder": "openrouter",
+    "embedding_model": "openai/text-embedding-3-small",
+    "dimensions": 256,
+    "chat_model": "openai/gpt-4.1-nano",
+    "generation": {
+      "reviews": 1576,
+      "cache_hits": 1248,
+      "unparseable": 0,
+      "invalid_citations": 0,
+      "offered": 12600,
+      "cited": 5297
+    },
+    "openrouter_calls": 328,
+    "openrouter_reported_cost_usd": 0.021568,
+    "rag_within_perfect": true
+  },
+  "replay_metadata": {
+    "network": "trivago",
+    "participants": 364,
+    "reviews": 2442,
+    "k": 5,
+    "seed": 0,
+    "embedder": "openrouter",
+    "embedding_model": "openai/text-embedding-3-small",
+    "dimensions": 256,
+    "chat_model": "openai/gpt-4.1-nano",
+    "generation": {
+      "reviews": 1576,
+      "cache_hits": 1576,
+      "unparseable": 0,
+      "invalid_citations": 0,
+      "offered": 12600,
+      "cited": 5297
+    },
+    "openrouter_calls": 0,
+    "openrouter_reported_cost_usd": 0,
+    "rag_within_perfect": true
+  }
+}
