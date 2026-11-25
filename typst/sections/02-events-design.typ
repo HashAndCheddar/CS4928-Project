@@ -22,9 +22,11 @@ Review end times omit exchanges that may occur during overlapping discussions. W
 
 We retained end times for RQ1 and Event A. The #ev("simulation/model.py", [loader]) and #ev("simulation/minimal_distances.py", [path algorithm]) implement the paper's rule @study. This keeps the comparison controlled and limits verification work, at the cost of timing realism. We did not measure an alternative timing model.
 
+*Module concepts.* Our decisions follow one principle: isolate what varies behind a narrow interface and leave the verified baseline closed to modification (Open/Closed). Keeping the authors' loader and path algorithm untouched protects the RQ1 comparison, and the RQ2 sharing policy (Section VII) is a Strategy-style seam. We rejected a general timing/memory framework and a general dataset/window interface as speculative generality: no requirement needed more than one function per variation.
+
 = Change Event B
 
-Event B concerns maintenance by a contributor without prior review involvement @eventbbrief. We examined the dataset/window walkthrough and split-cutoff exercise, comparing #commit("c936f52cc02d0e0b5f2d70d87df29ea71233195a", [response c936f52]) with its parent #commit("a3704ea1b5cf30a513b0e945af55613de8c248a7", [a3704ea]). The historical account expected a local change without redesign. The contributor later reported that the code and reports were readable, but retained no walkthrough notes or timings. This is a retrospective account; the exact M4 freeze and prediction dates remain unverified.
+Event B concerns maintenance by a contributor without prior review involvement @eventbbrief. We examined the dataset/window walkthrough and split-cutoff exercise, comparing #commit("c936f52cc02d0e0b5f2d70d87df29ea71233195a", [response c936f52]) with its parent #commit("a3704ea1b5cf30a513b0e945af55613de8c248a7", [a3704ea]). The historical account expected a local change without redesign. The contributor later reported that the code and reports were readable, but retained no walkthrough notes or timings. This readability account is retrospective. The pre-event state is fixed, however: the Week 9 decision appears in the coordinator's frozen tracker copy of 12 November @trackerfrozen, a day before the response commit.
 
 We considered no change, a local clarification and boundary test, or a general dataset/window interface. No change leaves the relevant rules implicit. A general interface adds flexibility and indirection beyond this task's needs. We chose the clarification and test, retaining the existing structure.
 

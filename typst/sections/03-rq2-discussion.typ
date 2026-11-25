@@ -26,7 +26,7 @@ The results challenge our expectation of equal or slightly lower coverage. Media
 
 Semantic retrieval has a lower median than random selection but a higher maximum. Some notes spread widely while many spread little; this does not establish which policy produces better review advice. Generation narrows sharing further, citing 5,297 of 12,600 offered item instances (42%). A valid citation shows that a note was offered, not that the generated comment was correct.
 
-We placed the sharing policies behind one function in a separate #ev("research/rq2/diffusion.py", [item-level engine]). This avoids changing the original distance algorithm or adding a broader memory/retrieval framework. The cost is a second diffusion implementation. Equivalence tests and the runner's numerical RQ1 comparison check that its perfect-memory policy preserves the baseline.
+We placed the sharing policies behind one `share(review, members, memory)` function in a separate #ev("research/rq2/diffusion.py", [item-level engine]): a Strategy, so each condition differs only in that function and the authors' code stays closed to modification. This avoids changing the original distance algorithm or adding a broader memory/retrieval framework. The cost is a second diffusion implementation. Equivalence tests and the runner's numerical RQ1 comparison check that its perfect-memory policy preserves the baseline.
 
 = Verification and AI Use
 
@@ -36,13 +36,15 @@ A later audit recorded 26 passing tests and one skipped token-dependent Zenodo t
 
 AI assisted writing and code inspection. Checking its initial account against the official handout and maintenance diff exposed the repository's RQ2/Event B labelling error, which we corrected in the synthesis. Claims were checked against code, outputs and tests.
 
-= Limitations
+= Threats to Validity
 
-Coverage measures potential outward spread, not understanding, received knowledge or useful learning. RQ2 uses synthetic notes and queries, one seed, one retrieval limit and one embedding/generation configuration. Its effect size may change with these choices.
+*Construct.* Coverage measures potential outward spread, not understanding, received knowledge or useful learning. A valid citation shows that a note was offered, not that the generated comment was correct.
 
-Review end times omit exchanges during overlapping discussions. Event A's activity groups and differing window populations limit causal interpretation; alternative-cutoff coverage was not measured. Event B's readability account is retrospective. Incomplete freeze records also limit claims about prediction timing.
+*Internal.* Review end times omit exchanges during overlapping discussions, and we did not measure an alternative timing rule. Event A's activity cohorts and differing window populations prevent causal claims about turnover, and alternative-cutoff coverage was not measured. Event B's readability account is retrospective, and the Event A prediction's timing rests on the tracker.
 
-Cached responses make the sampled generation run repeatable; fresh responses can differ even at temperature 0. Citation validity does not establish factual correctness. CSV rounding, parsed-value agreement and compressed-file identity must also be distinguished.
+*External.* RQ2 uses synthetic notes and queries on one network, with one seed, one retrieval limit and one embedding/generation configuration. The size of the gap may change with these choices.
+
+*Conclusion and reliability.* Cached responses make the sampled generation run repeatable; fresh responses can differ even at temperature 0. CSV rounding, parsed-value agreement and compressed-file identity must also be distinguished.
 
 = Conclusion
 
