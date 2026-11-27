@@ -15,7 +15,7 @@ Both questions use the full Trivago network: 364 participants and 2,442 reviews.
 
 We used the authors' distance algorithm without modification. Reviews act as communication channels, and information can pass onward only through reviews with strictly later end times. Coverage for source $s$ is $C_s = abs(R_s) / N$: the number of other reachable participants divided by the full network population. Participants with zero reach remain in the distribution.
 
-*Deviation.* The 9 October plan bounded the sample to the pack's first 12 participants in stable ID order. Trivago's size made the full network practical, so we ran all 364 sources; the 12 planned cases are a subset and lose nothing. Their reach ranges from 3 to 310 participants (median 265.5), so the frozen cases already show the spread that the full distribution summarises.
+One deviation from the plan: the 9 October plan bounded the sample to the pack's first 12 participants in stable ID order. Trivago's size made the full network practical, so we ran all 364 sources; the 12 planned cases are a subset and lose nothing. Their reach ranges from 3 to 310 participants (median 265.5), so the frozen cases already show the spread that the full distribution summarises.
 
 The #ev("research/rq1/run.py", [RQ1 runner]) regenerates distances and applies the authors' range calculation. Every row of the paper's Table 5 is reproduced at its reported precision @study (@tab:rq1). The median describes a typical participant; it differs from the lower bound of the paper's upper-70% interval.
 

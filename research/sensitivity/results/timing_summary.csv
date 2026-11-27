@@ -1,0 +1,4 @@
+rule,max,median,mean,participants_changed_vs_paper
+closed_first,0.7363,0.478,0.3988,322
+paper,0.8516,0.7335,0.6205,0
+overlap,0.8846,0.8819,0.7778,322

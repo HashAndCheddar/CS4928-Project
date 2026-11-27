@@ -15,6 +15,7 @@ The experiment data inspected for this synthesis are pinned to [40f8c85](https:/
 | Cache-only reproducibility | [Replay helper](research/rq2/replay.py), [saved verification](typst/repro-verification.json), [pinned environment](requirements-verified.txt) |
 | Tests | [RQ2 policy tests](test/test_rq2.py), [Event A boundary test](test/test_event_a.py), [final test output](typst/validation-tests.txt) |
 | Graph inputs and provenance | [CSV copies and SHA-256/source manifest](typst/figures/sources.json), [graph builder](typst/figures/regenerate.py) |
+| Timing-rule sensitivity | [Script](research/sensitivity/timing.py), [per-participant coverage](research/sensitivity/results/timing_coverage.csv), [summary](research/sensitivity/results/timing_summary.csv), [tests](test/test_sensitivity.py); the paper rule reproduces all 364 RQ1 reach counts |
 | Final paper | [PDF](typst/report.pdf), [Typst main](typst/main.typ), [build guide](typst/README.md) |
 
 The readability account is the team's retrospective report, not a timed newcomer study. The pre-Event-B state (Event A entries and Week 9 decision) is fixed by the coordinator's frozen tracker export of 12 November 2026; the timing of earlier predictions relative to their results rests on the tracker. The `FINAL` tag identifies this synthesis and its reproduction tools; it does not backdate those records.

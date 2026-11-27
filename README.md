@@ -57,6 +57,14 @@ python -m research.event_a.run
 
 RQ1 and Event A recompute distances and overwrite their generated outputs. Use a disposable checkout for those commands. The token-dependent Zenodo test is skipped without its optional dependencies/token; the separate public Trivago audit and test output are documented in [verification](typst/verification.md). Detailed commands, model settings, precision checks and limitations are in [REPRODUCING.md](REPRODUCING.md).
 
+## Timing sensitivity
+
+```bash
+python -m research.sensitivity.timing   # end-time rule vs. two start/end alternatives; stops unless the paper rule matches RQ1
+```
+
+Outputs go to `research/sensitivity/results/`. The RQ1 and Event A results are unchanged.
+
 ## Build the paper and graphs
 
 ```bash

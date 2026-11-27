@@ -1,4 +1,4 @@
-#import "../evidence.typ": ev, commit, comparison
+#import "../evidence.typ": ev, evf, commit, comparison
 = Change Event A
 
 Event A applies the same coverage measure to Spotify's 3 February-1 March 2020 network: 1,730 participants and 22,504 reviews @eventabrief. We split reviews by end time into 3-16 February and 17 February-1 March. The early/late turnover comparison is new; the authors' full-month Spotify results were already available.
@@ -20,9 +20,23 @@ The late window has 32% more reviews. Changes in activity, population and availa
 
 Review end times omit exchanges that may occur during overlapping discussions. We compared retaining this rule, using start/end intervals, and using comment or approval timestamps. The original rule preserves comparability and requires no extra data. Intervals capture overlap but need a transfer-time assumption. Interaction timestamps offer finer detail but require suitable data and a larger modelling change.
 
-We retained end times for RQ1 and Event A. The #ev("simulation/model.py", [loader]) and #ev("simulation/minimal_distances.py", [path algorithm]) implement the paper's rule @study. This keeps the comparison controlled and limits verification work, at the cost of timing realism. We did not measure an alternative timing model.
+We retained end times for RQ1 and Event A. The #ev("simulation/model.py", [loader]) and #ev("simulation/minimal_distances.py", [path algorithm]) implement the paper's rule @study. This keeps the comparison controlled and limits verification work, at the cost of timing realism.
 
-*Module concepts.* Our decisions follow one principle: isolate what varies behind a narrow interface and leave the verified baseline closed to modification (Open/Closed). Keeping the authors' loader and path algorithm untouched protects the RQ1 comparison, and the RQ2 sharing policy (Section VII) is a Strategy-style seam. We rejected a general timing/memory framework and a general dataset/window interface as speculative generality: no requirement needed more than one function per variation.
+Every Trivago review also records a start time, so we measured the interval option without changing the authors' code. A #evf("research/sensitivity/timing.py", [sensitivity script]) treats the transfer rule as one swappable predicate and brackets the paper's rule: _closed first_ (A ends before B starts), _paper_ (A ends before B ends) and _overlap_ (A starts before B ends). Each rule admits a superset of the previous one's transfers. The script stops unless the paper rule reproduces all 364 RQ1 reach counts, and #evf("test/test_sensitivity.py", [tests]) check it against the authors' algorithm on 25 random networks and check the nesting.
+
+#figure(
+  table(columns: 4,
+    table.header[*Transfer rule*][*Max*][*Median*][*Mean*],
+    [Closed first], [0.74], [0.48], [0.40],
+    [Paper (end < end)], [0.85], [0.73], [0.62],
+    [Overlap], [0.88], [0.88], [0.78],
+  ),
+  caption: [Trivago coverage under three timing rules. 322 of 364 participants change under either alternative. Source: #evf("research/sensitivity/results/timing_summary.csv", [timing summary]).],
+) <tab:timing>
+
+The timing rule moves the typical participant's coverage from 0.48 to 0.88 (@tab:timing). The paper's "upper bound" is therefore an upper bound _under its timing rule_: allowing overlap raises the maximum from 0.85 to 0.88, and 320 of 364 participants reach that level (rounded) while the other 44 reach at most 0.04. This changes how we justify the decision, not the decision itself. Keeping end times remains right for RQ1, because RQ1 asks whether the paper's result is repeatable; the timing assumption is now a measured sensitivity rather than an unquantified limitation.
+
+In module terms, our decisions follow one principle: isolate what varies behind a narrow interface and leave the verified baseline closed to modification (Open/Closed). Keeping the authors' loader and path algorithm untouched protects the RQ1 comparison, and both the timing predicate above and the RQ2 sharing policy (Section VII) are Strategy-style seams. We rejected a general timing/memory framework and a general dataset/window interface as speculative generality: no requirement needed more than one function per variation.
 
 = Change Event B
 
@@ -42,4 +56,4 @@ We considered no change, a local clarification and boundary test, or a general d
 
 The #ev("research/event_a/results/split_sensitivity.csv", [split-count analysis]) moves the cutoff from 17 to 18 February. This reassigns 973 reviews: early/late counts change from 9,703/12,801 to 10,676/11,828, while the total remains 22,504. Continuing/left/joined counts change from 1,397/131/202 to 1,402/145/183. Coverage was not recomputed for these alternative cutoffs.
 
-The response supports retaining the simple structure for these local changes. The comment exposes the dataset/date dependency, and the test makes the boundary rule explicit. A newcomer still needs the research rationale for selecting a dataset and window. Comments can become stale, tests need maintenance, and the timing assumption remains unvalidated. RQ2 is reported separately because its earlier Event B label does not match the official task.
+The response supports retaining the simple structure for these local changes. The comment exposes the dataset/date dependency, and the test makes the boundary rule explicit. A newcomer still needs the research rationale for selecting a dataset and window. Comments can become stale, tests need maintenance, and the timing assumption is now quantified (@tab:timing) but still not validated against real transfer times. RQ2 is reported separately because its earlier Event B label does not match the official task.

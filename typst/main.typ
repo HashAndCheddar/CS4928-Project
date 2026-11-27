@@ -13,7 +13,9 @@
     comparison gives mixed support for turnover predictions. A separate maintenance
     exercise supports retaining the existing structure with a local clarification
     and boundary test. Under semantic top-5 retrieval, median coverage falls from
-    0.73 to 0.04, and to 0.02 with generation. These findings are limited to the
+    0.73 to 0.04, and to 0.02 with generation. Bracketing the paper's timing rule with
+    review start times moves median coverage between 0.48 and 0.88, so the
+    reported bound is conditional on that rule. These findings are limited to the
     simulated information and recorded configurations.
   ],
   authors: (

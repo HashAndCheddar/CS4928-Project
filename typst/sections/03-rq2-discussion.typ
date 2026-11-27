@@ -1,4 +1,4 @@
-#import "../evidence.typ": ev
+#import "../evidence.typ": ev, evf
 
 = RQ2 Extension and Results
 
@@ -32,20 +32,24 @@ We placed the sharing policies behind one `share(review, members, memory)` funct
 
 The #ev("test/test_rq2.py", [tests]) compare perfect-memory reachability with the authors' algorithm on 25 generated networks. They also check equal-ending reviews, bounded sharing, large-limit equivalence, deterministic selection, citation filtering and cache replay.
 
-A later audit recorded 26 passing tests and one skipped token-dependent Zenodo test. It matched 82,208 parsed Trivago reference rows and reproduced the saved RQ2 CSV values from cache without API calls. These checks validate the implementation, not historical prediction dates. Commands and versions accompany the report.
+A later audit recorded 26 passing tests and one skipped token-dependent Zenodo test. It matched 82,208 parsed Trivago reference rows and reproduced the saved RQ2 CSV values from cache without API calls. These checks validate the implementation, not historical prediction dates. Commands and versions accompany the report. The #evf("test/test_sensitivity.py", [timing tests]) add equivalence and nesting checks for the three timing rules.
 
-AI assisted writing and code inspection. Checking its initial account against the official handout and maintenance diff exposed the repository's RQ2/Event B labelling error, which we corrected in the synthesis. Claims were checked against code, outputs and tests.
+AI assisted writing, code inspection and the timing-sensitivity script. We treated its output as a proposal, not evidence:
+
+- Checking its initial account against the official handout and maintenance diff exposed the repository's RQ2/Event B labelling error, which we corrected in the synthesis.
+- The AI-drafted timing script was accepted only after it reproduced all 364 RQ1 reach counts and matched the authors' algorithm in tests.
+- Its first timing summary reused the paper's percentile rows and reported a "top 70%" overlap value of 0.04. The overlap distribution has almost no values between 0.04 and 0.88, so that row was misleading; we report maximum, median and mean instead.
 
 = Threats to Validity
 
-*Construct.* Coverage measures potential outward spread, not understanding, received knowledge or useful learning. A valid citation shows that a note was offered, not that the generated comment was correct.
+Construct validity. Coverage measures potential outward spread, not understanding, received knowledge or useful learning. A valid citation shows that a note was offered, not that the generated comment was correct.
 
-*Internal.* Review end times omit exchanges during overlapping discussions, and we did not measure an alternative timing rule. Event A's activity cohorts and differing window populations prevent causal claims about turnover, and alternative-cutoff coverage was not measured. Event B's readability account is retrospective, and the Event A prediction's timing rests on the tracker.
+Internal validity. The timing rule controls the result: median coverage ranges from 0.48 to 0.88 across plausible rules (@tab:timing), and we keep the paper's rule for comparability. None of the rules is validated against actual transfer times. Event A's activity cohorts and differing window populations prevent causal claims about turnover, and alternative-cutoff coverage was not measured. Event B's readability account is retrospective, and the Event A prediction's timing rests on the tracker.
 
-*External.* RQ2 uses synthetic notes and queries on one network, with one seed, one retrieval limit and one embedding/generation configuration. The size of the gap may change with these choices.
+External validity. RQ2 uses synthetic notes and queries on one network, with one seed, one retrieval limit and one embedding/generation configuration. The size of the gap may change with these choices.
 
-*Conclusion and reliability.* Cached responses make the sampled generation run repeatable; fresh responses can differ even at temperature 0. CSV rounding, parsed-value agreement and compressed-file identity must also be distinguished.
+Conclusion validity and reliability. Cached responses make the sampled generation run repeatable; fresh responses can differ even at temperature 0. CSV rounding, parsed-value agreement and compressed-file identity must also be distinguished.
 
 = Conclusion
 
-RQ1 recovers Trivago's reported range. Event A gives mixed support for the turnover predictions and shows the importance of activity and observation windows. Event B supports a small maintenance response while leaving research rationale to be documented. Under the selected RQ2 configuration, restricted sharing sharply reduces coverage, with a further reduction under generation. Preserving a checked baseline and isolating the sharing policy made these comparisons possible.
+RQ1 recovers Trivago's reported range. Event A gives mixed support for the turnover predictions and shows the importance of activity and observation windows. Event B supports a small maintenance response while leaving research rationale to be documented. Measuring the rejected timing alternatives shows the paper's bound is conditional on its timing rule (median 0.48-0.88), which supports keeping that rule for RQ1 while quantifying its effect. Under the selected RQ2 configuration, restricted sharing sharply reduces coverage, with a further reduction under generation. Preserving a checked baseline and isolating each varying rule behind one function made these comparisons possible.
